@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_60" class="java.beans.XMLDecoder">
+ <object class="ClienteList" id="ClienteList0">
+  <void property="lista">
+   <void method="add">
+    <object class="Cliente">
+     <void property="apellidos">
+      <string>Diaz</string>
+     </void>
+     <void property="nombre">
+      <string>Sergio</string>
+     </void>
+     <void property="telefono">
+      <string>664702226</string>
+     </void>
+     <void property="vip">
+      <boolean>true</boolean>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="Cliente">
+     <void property="apellidos">
+      <string>Diaz</string>
+     </void>
+     <void property="nombre">
+      <string>Ruben</string>
+     </void>
+     <void property="telefono">
+      <string>664702226</string>
+     </void>
+     <void property="vip">
+      <boolean>true</boolean>
+     </void>
+    </object>
+   </void>
+  </void>
+ </object>
+</java>
