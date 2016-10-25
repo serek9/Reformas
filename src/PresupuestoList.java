@@ -11,4 +11,11 @@ public class PresupuestoList implements Serializable {
     public ArrayList<Presupuesto> getLista() {return lista;}
 
     public void setLista(ArrayList<Presupuesto> lista) {this.lista = lista;}
+
+    @Override
+    public String toString() {
+        return "PresupuestoList{" +
+                "lista=" + lista +
+                '}';
+    }
 }

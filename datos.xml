@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_101" class="java.beans.XMLDecoder">
+<java version="1.8.0_60" class="java.beans.XMLDecoder">
  <object class="ClienteList" id="ClienteList0">
   <void property="lista">
    <void method="add">
@@ -29,6 +29,22 @@
           </void>
          </object>
         </void>
+        <void method="add">
+         <object class="Presupuesto">
+          <void property="codigo">
+           <int>2</int>
+          </void>
+          <void property="concepto">
+           <string>Nexus</string>
+          </void>
+          <void property="estado">
+           <string>pendiente</string>
+          </void>
+          <void property="precion">
+           <double>220.0</double>
+          </void>
+         </object>
+        </void>
        </void>
       </object>
      </void>
@@ -37,6 +53,41 @@
      </void>
      <void property="vip">
       <boolean>true</boolean>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="Cliente">
+     <void property="apellidos">
+      <string>Comuñas</string>
+     </void>
+     <void property="nombre">
+      <string>Alberto</string>
+     </void>
+     <void property="presupuestos">
+      <object class="PresupuestoList" id="PresupuestoList1">
+       <void property="lista">
+        <void method="add">
+         <object class="Presupuesto">
+          <void property="codigo">
+           <int>1</int>
+          </void>
+          <void property="concepto">
+           <string>Xiaomi</string>
+          </void>
+          <void property="estado">
+           <string>aceptado</string>
+          </void>
+          <void property="precion">
+           <double>290.0</double>
+          </void>
+         </object>
+        </void>
+       </void>
+      </object>
+     </void>
+     <void property="telefono">
+      <string>567890123</string>
      </void>
     </object>
    </void>

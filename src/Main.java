@@ -31,6 +31,7 @@ public class Main {
                         altaPresupuesto();
                         break;
                     case 3:
+                        presPendientes();
                         break;
                     case 4:
                         break;
@@ -87,7 +88,6 @@ public class Main {
     public static void altaPresupuesto(){
         System.out.println("REGISTRAR PRESUPUESTO.");
         String numCliente  = EntradaDatos.pedirCadenaNoVacia("Introduce telefono del cliente: ");
-        //PARANOIA "misClientes", "ClienteList".
         boolean existe = misClientes.existeCliente(numCliente);
         Cliente cliente = misClientes.obtenerClientePorTelefono(numCliente);
 
@@ -114,12 +114,22 @@ public class Main {
             }while(!valido && !pendiente);
 
             Presupuesto p = new Presupuesto(codigo, concepto, precio, estado);
-            //TODO Añadir presupuesto y grabar(misPresupuestos??).
             cliente.getPresupuestos().alta(p);
             miFichero.grabar(misClientes);
             System.out.println("Presupuesto registrado.");
         }else {
             System.out.println("El cliente no existe, no se puede añadir presupuesto.");
+        }
+    }
+
+    public static void presPendientes(){
+        System.out.println("PRESUPUESTOS PENDIENTES.");
+        for (Cliente c:misClientes.getLista()) {
+            for (Presupuesto p : c.getPresupuestos().getLista()) {
+                if (p.getEstado().equalsIgnoreCase("pendiente")) {
+                    System.out.println(c.getNombre()+" "+c.getApellidos()+" --> "+p);
+                }
+            }
         }
     }
 
