@@ -4,6 +4,7 @@ public class Main {
 
     private static ClienteList misClientes;
     private static  Fichero miFichero;
+    private static String[] estados = {"aceptado","pendiente","rechazado"};
 
     public static void main(String[] args) {
         int option = 0;
@@ -79,6 +80,53 @@ public class Main {
         misClientes.alta(c);
         miFichero.grabar(misClientes);
         System.out.println("Cliente dado de alta.");
+    }
+
+    public static void altaPresupuesto(){
+        System.out.println("ALTA PRESUPUESTO:");
+        String numCliente  = EntradaDatos.pedirCadenaNoVacia("Introduce telefono del cliente: ");
+        //PARANOIA "misClientes", "ClienteList".
+        boolean existe = misClientes.existeCliente(numCliente);
+        Cliente cliente = misClientes.obtenerClientePorTelefono(numCliente);
+
+        if (existe){
+            int codigo = EntradaDatos.pedirEntero("Introduce el codigo del presupuesto:");
+            String concepto = EntradaDatos.pedirCadenaNoVacia("Introduce el concepto");
+            double precio = EntradaDatos.pedirDouble("Introduce el precio neto del presupuesto");
+            String estado;
+            boolean valido = false, pendiente = false;
+
+            do {
+                estado = EntradaDatos.pedirCadenaNoVacia("Estado del presupuesto: [aceptado] [pendiente] [rechazado]");
+                for (String a:estados){
+                    if (a.equalsIgnoreCase(estado)){
+                        valido = true;
+                    }
+                }
+                if (!valido){
+                    pendiente = SoN("Estado no valido. ¿Dejar pendiente?");
+                    if (pendiente){
+                        estado = "pendiente";
+                    }
+                }
+            }while(!valido && !pendiente);
+
+            Presupuesto presupuesto = new Presupuesto(codigo, concepto, precio, estado);
+            //TODO Añadir presupuesto y grabar(misPresupuestos??).
+        }else {
+            System.out.println("El cliente no existe, no se puede añadir presupuesto.");
+        }
+    }
+
+    public static boolean SoN(String mensaje){
+        String respuesta;
+        do{
+            respuesta = EntradaDatos.pedirCadenaNoVacia(mensaje+" [si][no]");
+            if(!respuesta.equalsIgnoreCase("si")&&!respuesta.equalsIgnoreCase("no")){
+                System.out.println("Por favor, introduce un valor valido");
+            }
+        }while(!respuesta.equalsIgnoreCase("si")&&!respuesta.equalsIgnoreCase("no"));
+        return respuesta.equals("si");
     }
 
     private static void showClientes(){

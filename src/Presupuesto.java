@@ -1,13 +1,13 @@
 public class Presupuesto {
     private int codigo;
     private String concepto;
-    private double precion;
+    private double precio;
     private String estado;
 
-    public Presupuesto(int codigo, String concepto, double precion, String estado) {
+    public Presupuesto(int codigo, String concepto, double precio, String estado) {
         this.codigo = codigo;
         this.concepto = concepto;
-        this.precion = precion;
+        this.precio = precio;
         this.estado = estado;
     }
 
@@ -17,8 +17,8 @@ public class Presupuesto {
     public String getConcepto() {return concepto;}
     public void setConcepto(String concepto) {this.concepto = concepto;}
 
-    public double getPrecion() {return precion;}
-    public void setPrecion(double precion) {this.precion = precion;}
+    public double getPrecion() {return precio;}
+    public void setPrecion(double precion) {this.precio = precion;}
 
     public String getEstado() {return estado;}
     public void setEstado(String estado) {this.estado = estado;}
@@ -28,7 +28,7 @@ public class Presupuesto {
         return "Presupuesto{" +
                 "codigo=" + codigo +
                 ", concepto='" + concepto + '\'' +
-                ", precion=" + precion +
+                ", precion=" + precio +
                 ", estado='" + estado + '\'' +
                 '}';
     }
