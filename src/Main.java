@@ -34,8 +34,10 @@ public class Main {
                         presPendientes();
                         break;
                     case 4:
+                        presCliente();
                         break;
                     case 5:
+                        presRechazados();
                         break;
                     case 6:
                         showClientes();
@@ -128,6 +130,36 @@ public class Main {
             for (Presupuesto p : c.getPresupuestos().getLista()) {
                 if (p.getEstado().equalsIgnoreCase("pendiente")) {
                     System.out.println(c.getNombre()+" "+c.getApellidos()+" --> "+p);
+                }
+            }
+        }
+    }
+
+    public static void presCliente(){
+        System.out.println("PRESUPUESTOS.");
+        String numCliente  = EntradaDatos.pedirCadenaNoVacia("Introduce telefono del cliente: ");
+        boolean existe = misClientes.existeCliente(numCliente);
+        Cliente cliente = misClientes.obtenerClientePorTelefono(numCliente);
+
+        if (existe){
+            System.out.println("Presupuestos de "+cliente.getNombre()+"("+cliente.getTelefono()+")");
+            System.out.println(cliente.getPresupuestos().getLista());
+        }else {
+            System.out.println("El cliente no existe.");
+        }
+    }
+
+    public static void presRechazados(){
+        System.out.println("PRESUPUESTOS RECHAZADOS.");
+        boolean entr = false;
+        for (Cliente c:misClientes.getLista()) {
+            for (Presupuesto p : c.getPresupuestos().getLista()) {
+                if (p.getEstado().equalsIgnoreCase("rechazado")) {
+                    System.out.println(c.getNombre()+" "+c.getApellidos()+" --> "+p);
+                    entr = true;
+                }
+                if (!entr){
+                    System.out.println("No hay presupuestos rechazados.");
                 }
             }
         }
