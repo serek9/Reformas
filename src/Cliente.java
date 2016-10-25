@@ -6,7 +6,7 @@ public class Cliente implements Serializable {
     private String apellidos;
     private String telefono;
     private boolean vip;
-    private List presupuestos;
+    private PresupuestoList presupuestos;
 
     public Cliente() {
 
@@ -17,6 +17,7 @@ public class Cliente implements Serializable {
         this.apellidos = apellidos;
         this.telefono = telefono;
         this.vip = vip;
+        presupuestos = new PresupuestoList();
     }
 
     public String getNombre() {return nombre;}
@@ -35,9 +36,13 @@ public class Cliente implements Serializable {
 
     public void setVip(boolean vip) {this.vip = vip;}
 
-    public List getPresupuestos() {return presupuestos;}
+    public PresupuestoList getPresupuestos() {
+        return presupuestos;
+    }
 
-    public void setPresupuestos(List presupuestos) {this.presupuestos = presupuestos;}
+    public void setPresupuestos(PresupuestoList presupuestos) {
+        this.presupuestos = presupuestos;
+    }
 
     @Override
     public String toString() {

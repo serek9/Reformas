@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_60" class="java.beans.XMLDecoder">
+<java version="1.8.0_101" class="java.beans.XMLDecoder">
  <object class="ClienteList" id="ClienteList0">
   <void property="lista">
    <void method="add">
@@ -10,24 +10,30 @@
      <void property="nombre">
       <string>Sergio</string>
      </void>
+     <void property="presupuestos">
+      <object class="PresupuestoList" id="PresupuestoList0">
+       <void property="lista">
+        <void method="add">
+         <object class="Presupuesto">
+          <void property="codigo">
+           <int>1</int>
+          </void>
+          <void property="concepto">
+           <string>tele</string>
+          </void>
+          <void property="estado">
+           <string>aceptado</string>
+          </void>
+          <void property="precion">
+           <double>300.0</double>
+          </void>
+         </object>
+        </void>
+       </void>
+      </object>
+     </void>
      <void property="telefono">
-      <string>664702226</string>
-     </void>
-     <void property="vip">
-      <boolean>true</boolean>
-     </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="Cliente">
-     <void property="apellidos">
-      <string>Diaz</string>
-     </void>
-     <void property="nombre">
-      <string>Ruben</string>
-     </void>
-     <void property="telefono">
-      <string>664702226</string>
+      <string>888999000</string>
      </void>
      <void property="vip">
       <boolean>true</boolean>

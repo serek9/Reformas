@@ -1,8 +1,14 @@
-public class Presupuesto {
+import java.io.Serializable;
+
+public class Presupuesto implements Serializable{
     private int codigo;
     private String concepto;
     private double precio;
     private String estado;
+
+    public Presupuesto() {
+
+    }
 
     public Presupuesto(int codigo, String concepto, double precio, String estado) {
         this.codigo = codigo;

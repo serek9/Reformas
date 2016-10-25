@@ -3,7 +3,7 @@ import java.io.InputStreamReader;
 public class Main {
 
     private static ClienteList misClientes;
-    private static  Fichero miFichero;
+    private static Fichero miFichero;
     private static String[] estados = {"aceptado","pendiente","rechazado"};
 
     public static void main(String[] args) {
@@ -28,6 +28,7 @@ public class Main {
                         altaCliente();
                         break;
                     case 2:
+                        altaPresupuesto();
                         break;
                     case 3:
                         break;
@@ -53,6 +54,7 @@ public class Main {
     }
 
     public static void altaCliente(){
+        System.out.println("ALTA CLIENTE.");
         String nombre = EntradaDatos.pedirCadenaNoVacia("Nombre del Cliente: ");
         String apellido = EntradaDatos.pedirCadenaNoVacia("Apellido del Cliente: ");
         String telefono;
@@ -83,7 +85,7 @@ public class Main {
     }
 
     public static void altaPresupuesto(){
-        System.out.println("ALTA PRESUPUESTO:");
+        System.out.println("REGISTRAR PRESUPUESTO.");
         String numCliente  = EntradaDatos.pedirCadenaNoVacia("Introduce telefono del cliente: ");
         //PARANOIA "misClientes", "ClienteList".
         boolean existe = misClientes.existeCliente(numCliente);
@@ -111,8 +113,11 @@ public class Main {
                 }
             }while(!valido && !pendiente);
 
-            Presupuesto presupuesto = new Presupuesto(codigo, concepto, precio, estado);
+            Presupuesto p = new Presupuesto(codigo, concepto, precio, estado);
             //TODO Añadir presupuesto y grabar(misPresupuestos??).
+            cliente.getPresupuestos().alta(p);
+            miFichero.grabar(misClientes);
+            System.out.println("Presupuesto registrado.");
         }else {
             System.out.println("El cliente no existe, no se puede añadir presupuesto.");
         }
