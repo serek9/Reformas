@@ -43,8 +43,10 @@ public class Main {
                         showClientes();
                         break;
                     case 7:
+                        cambiaEstado();
                         break;
                     case 8:
+                        System.out.println("Has salido.");
                         break;
                     default:
                         System.out.println("Opción incorrecta, de 1 a 8.");
@@ -180,6 +182,19 @@ public class Main {
         System.out.println("Listado de clientes en el sistema.");
         for (Cliente c : misClientes.getLista()){
             System.out.println(c);
+        }
+    }
+
+    private static void cambiaEstado(){
+        System.out.println("CAMBIAR ESTADO PRESUPUESTO.");
+        String numCliente  = EntradaDatos.pedirCadenaNoVacia("Introduce telefono del cliente: ");
+        boolean existe = misClientes.existeCliente(numCliente);
+        Cliente cliente = misClientes.obtenerClientePorTelefono(numCliente);
+        //TODO Acabar función
+        if (existe){
+            String numPres  = EntradaDatos.pedirCadenaNoVacia("Introduce codigo del presupuesto: ");
+            boolean existe1 = cliente.existeCliente(numPres);
+            Cliente cliente = misClientes.obtenerClientePorTelefono(numCliente);
         }
     }
 

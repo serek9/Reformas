@@ -1,5 +1,5 @@
 import java.io.Serializable;
-
+//TODO existePresupuesto y obtenerPresupuestoPorCodigo
 public class Presupuesto implements Serializable{
     private int codigo;
     private String concepto;
