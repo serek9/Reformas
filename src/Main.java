@@ -1,5 +1,3 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 public class Main {
 
     private static ClienteList misClientes;
@@ -17,7 +15,6 @@ public class Main {
         if(misClientes == null) {
             misClientes = new ClienteList();
         }
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
         mostrarMenu();
         try {
             while (option != 8) {
@@ -43,7 +40,7 @@ public class Main {
                         showClientes();
                         break;
                     case 7:
-                        cambiaEstado();
+                        cambiarEstado();
                         break;
                     case 8:
                         System.out.println("Has salido.");
@@ -83,10 +80,16 @@ public class Main {
                 System.out.println("Respuesta no valida, escribe si o no.");
             }
         }while(!respuesta.equalsIgnoreCase("SI") && !respuesta.equalsIgnoreCase("NO"));
-        Cliente c = new Cliente(nombre, apellido, telefono, vip);
-        misClientes.alta(c);
-        miFichero.grabar(misClientes);
-        System.out.println("Cliente dado de alta.");
+        boolean telexis = misClientes.existeCliente(telefono);
+        if (!telexis){
+            Cliente c = new Cliente(nombre, apellido, telefono, vip);
+            misClientes.alta(c);
+            miFichero.grabar(misClientes);
+            System.out.println("Cliente dado de alta.");
+        }
+        if (telexis){
+            System.out.println("Error. El telefono ya existe.");
+        }
     }
 
     public static void altaPresupuesto(){
@@ -116,11 +119,16 @@ public class Main {
                     }
                 }
             }while(!valido && !pendiente);
-
-            Presupuesto p = new Presupuesto(codigo, concepto, precio, estado);
-            cliente.getPresupuestos().alta(p);
-            miFichero.grabar(misClientes);
-            System.out.println("Presupuesto registrado.");
+            boolean codexis = cliente.getPresupuestos().existePresupuesto(codigo);
+            if (!codexis){
+                Presupuesto p = new Presupuesto(codigo, concepto, precio, estado);
+                cliente.getPresupuestos().alta(p);
+                miFichero.grabar(misClientes);
+                System.out.println("Presupuesto registrado.");
+            }
+            if (codexis){
+                System.out.println("Error. El codigo del presupuesto ya existe.");
+            }
         }else {
             System.out.println("El cliente no existe, no se puede añadir presupuesto.");
         }
@@ -185,16 +193,41 @@ public class Main {
         }
     }
 
-    private static void cambiaEstado(){
+    private static void cambiarEstado(){
         System.out.println("CAMBIAR ESTADO PRESUPUESTO.");
+        String estado;
+        boolean pendiente = false;
+        boolean valido = false;
         String numCliente  = EntradaDatos.pedirCadenaNoVacia("Introduce telefono del cliente: ");
         boolean existe = misClientes.existeCliente(numCliente);
         Cliente cliente = misClientes.obtenerClientePorTelefono(numCliente);
-        //TODO Acabar función
         if (existe){
-            String numPres  = EntradaDatos.pedirCadenaNoVacia("Introduce codigo del presupuesto: ");
-            boolean existe1 = cliente.existeCliente(numPres);
-            Cliente cliente = misClientes.obtenerClientePorTelefono(numCliente);
+            int numPres  = EntradaDatos.pedirEntero("Introduce codigo del presupuesto: ");
+            boolean existe1 = cliente.getPresupuestos().existePresupuesto(numPres);
+            Presupuesto presupuesto = cliente.getPresupuestos().obtenerPresupuestoPorCodigo(numPres);
+            if (existe1){
+                do{
+                    estado = EntradaDatos.pedirCadenaNoVacia("Estado del presupuesto: [aceptado] [pendiente] [rechazado]");
+                    for (String a:estados){
+                        if (a.equalsIgnoreCase(estado)){
+                            valido = true;
+                        }
+                    }
+                    if (!valido){
+                        pendiente = SoN("Estado no valido. ¿Dejar pendiente?");
+                        if (pendiente){
+                            estado = "pendiente";
+                        }
+                    }
+                }while (!valido && !pendiente);
+                    presupuesto.setEstado(estado);
+                    miFichero.grabar(misClientes);
+                System.out.println("Estado del presupuesto modificado.");
+            }else {
+                System.out.println("No existe el presupuesto.");
+            }
+        }else{
+            System.out.println("No existe el cliente.");
         }
     }
 

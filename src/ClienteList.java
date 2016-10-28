@@ -1,8 +1,3 @@
-/*
- * Incluye el ArrayList<Game> para poder serializarlo
- * y grabarlo en fichero como un único objeto JavaBean
- */
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -33,16 +28,11 @@ public class ClienteList implements Serializable {
     }
     
     public Cliente obtenerClientePorTelefono(String telefono) {
-        // REcorremos la lista
         for (Cliente c : lista) {
-            // Si el telefono del cliente actual es igual al telefono q me pasan
             if (c.getTelefono().equalsIgnoreCase(telefono)) {
-                // devolvemos el cliente encontrado
                 return c;
             }
         }
-        // Si llega a este punto es que no ha encontrado 
-        // ningún cliente con el telefono pasado
         return null;
     }
     

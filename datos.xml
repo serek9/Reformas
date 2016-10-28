@@ -22,7 +22,7 @@
            <string>tele</string>
           </void>
           <void property="estado">
-           <string>aceptado</string>
+           <string>rechazado</string>
           </void>
           <void property="precion">
            <double>300.0</double>
@@ -38,10 +38,26 @@
            <string>Nexus</string>
           </void>
           <void property="estado">
-           <string>pendiente</string>
+           <string>aceptado</string>
           </void>
           <void property="precion">
            <double>220.0</double>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="Presupuesto">
+          <void property="codigo">
+           <int>3</int>
+          </void>
+          <void property="concepto">
+           <string>Motorola</string>
+          </void>
+          <void property="estado">
+           <string>aceptado</string>
+          </void>
+          <void property="precion">
+           <double>129.0</double>
           </void>
          </object>
         </void>
@@ -76,10 +92,42 @@
            <string>Xiaomi</string>
           </void>
           <void property="estado">
-           <string>aceptado</string>
+           <string>rechazado</string>
           </void>
           <void property="precion">
            <double>290.0</double>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="Presupuesto">
+          <void property="codigo">
+           <int>3</int>
+          </void>
+          <void property="concepto">
+           <string>Motorola</string>
+          </void>
+          <void property="estado">
+           <string>rechazado</string>
+          </void>
+          <void property="precion">
+           <double>129.0</double>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="Presupuesto">
+          <void property="codigo">
+           <int>2</int>
+          </void>
+          <void property="concepto">
+           <string>Macbook Pro</string>
+          </void>
+          <void property="estado">
+           <string>aceptado</string>
+          </void>
+          <void property="precion">
+           <double>1600.0</double>
           </void>
          </object>
         </void>
@@ -88,6 +136,25 @@
      </void>
      <void property="telefono">
       <string>567890123</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="Cliente">
+     <void property="apellidos">
+      <string>Diaz</string>
+     </void>
+     <void property="nombre">
+      <string>Ruben</string>
+     </void>
+     <void property="presupuestos">
+      <object class="PresupuestoList"/>
+     </void>
+     <void property="telefono">
+      <string>664702226</string>
+     </void>
+     <void property="vip">
+      <boolean>true</boolean>
      </void>
     </object>
    </void>

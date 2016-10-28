@@ -12,6 +12,25 @@ public class PresupuestoList implements Serializable {
 
     public void setLista(ArrayList<Presupuesto> lista) {this.lista = lista;}
 
+    public Presupuesto obtenerPresupuestoPorCodigo(int codigo){
+        for (Presupuesto p:lista){
+            if (p.getCodigo()==codigo){
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public boolean existePresupuesto(int num){
+        boolean existe = false;
+        for (Presupuesto p:lista){
+            if (p.getCodigo()==num){
+                existe = true;
+            }
+        }
+        return existe;
+    }
+
     @Override
     public String toString() {
         return "PresupuestoList{" +
